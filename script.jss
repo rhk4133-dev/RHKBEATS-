@@ -1,13 +1,12 @@
-// ------------------------------
-// 5 SONGS ONLY
-// Replace YOUTUBE_ID_x with actual YouTube Video IDs
+ // ------------------------------
+// 5 YouTube Songs
 // ------------------------------
 let songs = [
-    { name: "ದಿಲ್ ಲಗಾನಾ ಮನತಾ", file: "YOUTUBE_ID_1", img: "img1.jpg" },
-    { name: "ಕಾಗದದ ದೋಣಿಯಲ್ಲಿ", file: "YOUTUBE_ID_2", img: "img2.jpg" },
-    { name: "ಕನವೇ ಕನವೇ", file: "YOUTUBE_ID_3", img: "img3.jpg" },
-    { name: "ಜರಾ ಜರಾ", file: "YOUTUBE_ID_4", img: "img4.jpg" },
-    { name: "ಒರುಮ್ ಬ್ಲಡ್", file: "YOUTUBE_ID_5", img: "img5.jpg" }
+    { name: "Song 1", file: "45ZXIpC53tY", img: "img1.jpg" },
+    { name: "Song 2", file: "05h-b8yOwwE", img: "img2.jpg" },
+    { name: "Song 3", file: "WbSV889CwBc", img: "img3.jpg" },
+    { name: "Song 4", file: "yMNm6XAxduU", img: "img4.jpg" },
+    { name: "Song 5", file: "7uFWC5xNnYQ", img: "img5.jpg" }
 ];
 
 // DOM Elements
@@ -46,23 +45,20 @@ function updateSlideTitles(){
     nextTitle.innerText = songs[nextIndex].name;
 }
 
-// ------------------------------
 // YouTube IFrame API
-// ------------------------------
 function onYouTubeIframeAPIReady(){
     player = new YT.Player('youtubePlayer', {
         height: '0',
         width: '0',
         videoId: songs[0].file,
         playerVars: {
-            autoplay: 1,
+            autoplay: 0,
             controls: 0,
             disablekb: 1,
             modestbranding: 1,
             rel: 0
         },
         events: {
-            'onReady': ()=>{},
             'onStateChange': onPlayerStateChange
         }
     });
@@ -72,9 +68,7 @@ function onPlayerStateChange(event){
     if(event.data === YT.PlayerState.ENDED) nextSong();
 }
 
-// ------------------------------
 // PLAY SONG (Only YouTube)
-// ------------------------------
 function playSong(index){
     currentIndex = index;
     const song = songs[index];
